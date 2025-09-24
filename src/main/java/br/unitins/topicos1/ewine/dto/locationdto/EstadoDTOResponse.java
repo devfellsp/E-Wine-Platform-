@@ -9,7 +9,7 @@ public record EstadoDTOResponse
     Long idPais
 ) {
 
-    public EstadoDTOResponse valueOf (Estado estado) {
+    public static EstadoDTOResponse valueOf (Estado estado) {
         return new EstadoDTOResponse(
             estado.getNome(),
             estado.getSigla(),

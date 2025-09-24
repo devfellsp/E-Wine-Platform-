@@ -2,15 +2,11 @@ package br.unitins.topicos1.ewine.model.locationentities;
 
 import br.unitins.topicos1.ewine.model.others.DefaultEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 
 @Entity
 public class Pais extends DefaultEntity {
     private String nome;
     private String sigla;
-
-        @Enumerated(EnumType.STRING)
     private Regiao regiao;
 
     public String getNome() {
