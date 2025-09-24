@@ -5,7 +5,7 @@ public record CidadeDTOResponse(
     String nome,
     Long idEstado
 ) {
-    public CidadeDTOResponse valueOf (Cidade cidade) {
+    public static CidadeDTOResponse valueOf (Cidade cidade) {
         return new CidadeDTOResponse(
             cidade.getNome(),
             cidade.getEstado().getId()
