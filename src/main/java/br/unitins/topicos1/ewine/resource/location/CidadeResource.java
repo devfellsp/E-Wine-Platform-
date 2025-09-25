@@ -1,6 +1,5 @@
 package br.unitins.topicos1.ewine.resource.location;
 
-
 import java.util.List;
 
 import br.unitins.topicos1.ewine.dto.locationdto.CidadeDTO;
@@ -10,7 +9,6 @@ import br.unitins.topicos1.ewine.service.location.CidadeService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 
 @Path("/cidades")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -21,49 +19,42 @@ public class CidadeResource {
     CidadeService cidadeService;
 
     @POST
-    public Response create(CidadeDTO dto) {
-        CidadeDTOResponse response = cidadeService.create(dto);
-        return Response.status(Response.Status.CREATED).entity(response).build();
+    public CidadeDTOResponse create(CidadeDTO dto) {
+        return cidadeService.create(dto);
     }
 
     @PUT
     @Path("/{id}")
-    public Response update(@PathParam("id") Long id, CidadeDTO dto) {
-        CidadeDTOResponse response = cidadeService.update(id, dto);
-        return Response.ok(response).build();
+    public CidadeDTOResponse update(@PathParam("id") Long id, CidadeDTO dto) {
+        return cidadeService.update(id, dto);
     }
 
     @DELETE
     @Path("/{id}")
-    public Response delete(@PathParam("id") Long id) {
+    public void delete(@PathParam("id") Long id) {
         cidadeService.delete(id);
-        return Response.noContent().build();
     }
 
     @GET
     @Path("/{id}")
-    public Response findById(@PathParam("id") Long id) {
-        CidadeDTOResponse response = cidadeService.findById(id);
-        return Response.ok(response).build();
+    public CidadeDTOResponse findById(@PathParam("id") Long id) {
+        return cidadeService.findById(id);
     }
 
     @GET
-    public Response findAll() {
-        List<CidadeDTOResponse> list = cidadeService.findAll();
-        return Response.ok(list).build();
+    public List<CidadeDTOResponse> findAll() {
+        return cidadeService.findAll();
     }
 
     @GET
     @Path("/search/nome/{nome}")
-    public Response findByNome(@PathParam("nome") String nome) {
-        List<CidadeDTOResponse> list = cidadeService.findByNome(nome);
-        return Response.ok(list).build();
+    public List<CidadeDTOResponse> findByNome(@PathParam("nome") String nome) {
+        return cidadeService.findByNome(nome);
     }
 
     @GET
     @Path("/search/estado/{idEstado}")
-    public Response findByEstadoId(@PathParam("idEstado") Long idEstado) {
-        List<CidadeDTOResponse> list = cidadeService.findByEstadoId(idEstado);
-        return Response.ok(list).build();
+    public List<CidadeDTOResponse> findByEstadoId(@PathParam("idEstado") Long idEstado) {
+        return cidadeService.findByEstadoId(idEstado);
     }
 }
