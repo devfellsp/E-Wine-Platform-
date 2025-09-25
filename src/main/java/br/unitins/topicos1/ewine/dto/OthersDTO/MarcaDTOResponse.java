@@ -8,7 +8,7 @@ public record MarcaDTOResponse(
     String anofundacao,
     String classificacao
     ) {
-        public MarcaDTOResponse valueof (Marca marca){
+        public static MarcaDTOResponse valueOf (Marca marca){
 
             return new MarcaDTOResponse(
                 marca.getNome(),
